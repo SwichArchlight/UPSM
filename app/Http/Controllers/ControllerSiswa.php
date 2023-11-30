@@ -18,10 +18,10 @@ class ControllerSiswa extends Controller
     }
     public function store(Request $request){
         $request->validate([
-            'nama_siswa' => 'required',
-            'kelas' => 'required',
-            'jurusan' => 'required',
-            'nis' => 'required',
+            'nama_siswa' => 'required|min:3',
+            'kelas' => 'required|min:3',
+            'jurusan' => 'required|min:3',
+            'nis' => 'required|max:8',
         ]);
 
         DB::table('datasiswa')->insert([
