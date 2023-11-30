@@ -8,9 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
   
 </head>
 
@@ -26,15 +25,16 @@
             <div class="card-body">
                 <a class="btn btn-primary m-3" href="/tambah" role="button"> <i class="fas fa-plus"></i> Tambah Data Siswa </a>
     <button class="btn btn-danger" onclick="exportTabelKeCSV('datasiswa.csv')"> <i class="fas fa-print"></i> Download CSV </button>    
-                    <table class="table table-border" id="tabs" >
+                    <table id="index" class="display">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">NIS</th>
-                                <th scope="col">Nama Siswa</th>
-                                <th scope="col">Jurusan</th>
-                                <th scope="col">Kelas</th>
-                                <th scope="col">Option</th>
+                                <th>No</th>
+                                <th>NIS</th>
+                                <th>Nama Siswa</th>
+                                <th>Jurusan</th>
+                                <th>Kelas</th>
+                                <th>Option</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($siswa as $siswa)
@@ -48,6 +48,7 @@
                                     <a class="btn btn-primary mb-1" href="edit/{{ $siswa->id }}" role="button"> <i class="fas fa-cog"></i> Edit</a>
                                     <a class="btn btn-danger mb-1" href="delete/{{ $siswa->id }}" role="button" data-confirm-delete="true">  <i class="fas fa-trash"></i> Hapus </a>
                                 </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>              
@@ -58,8 +59,11 @@
 
 
 </body>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script>    
+new DataTable('#index');
+</script>
 <script>
     
 </script>
@@ -97,8 +101,5 @@ function downloadCSV(csv, filename) {
     // Klik link download
     linkDonwload.click();
 }
-</script>
-<script>
-    new DataTable('#tabs');
 </script>
 </html>
